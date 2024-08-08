@@ -1,3 +1,4 @@
+-- Create trigger delimeter
 DELIMITER //
 
 
