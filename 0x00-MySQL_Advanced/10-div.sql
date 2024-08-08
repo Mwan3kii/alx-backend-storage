@@ -1,18 +1,14 @@
 -- Create function SafeDiv that perform safe division
+DROP FUNCTION IF EXISTS SafeDiv;
 DELIMITER //
-
-CREATE FUNCTION SafeDiv(a INT, b INT)
-RETURNS DECIMAL(10, 2)
-DETERMINISTIC
+CREATE FUNCTION SafeDiv (a INT, b INT)
+RETURNS FLOAT DETERMINISTIC
 BEGIN
-    DECLARE result DECIMAL(10, 2);
-    IF b = 0 THEN
-        SET result = 0;
-    ELSE
+    DECLARE result FLOAT DEFAULT 0;
+
+    IF b != 0 THEN
         SET result = a / b;
     END IF;
-    
     RETURN result;
 END //
-
 DELIMITER ;
