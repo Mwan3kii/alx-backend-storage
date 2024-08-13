@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-
-""" Module for using PyMongo """
+"""mongo_collection will be the pymongo collection object"""
 
 
 def top_students(mongo_collection):

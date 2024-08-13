@@ -1,2 +1,2 @@
-// lists all databases in MongoDB
+// lists all databases found in the MongoDB
 show dbs
