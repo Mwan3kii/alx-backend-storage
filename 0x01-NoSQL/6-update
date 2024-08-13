@@ -1,0 +1,5 @@
+DB_NAME="$1"
+mongo "$DB_NAME" --quiet --eval 'db.school.updateMany(
+  { name: "Holberton school" },
+  { $set: { address: "972 Mission street" } }
+)'

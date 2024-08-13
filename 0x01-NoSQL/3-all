@@ -1,0 +1,2 @@
+DB_NAME="$1"
+mongo "$DB_NAME" --quiet --eval 'db.school.find().forEach(printjson)'

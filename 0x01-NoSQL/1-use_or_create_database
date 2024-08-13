@@ -1,0 +1,2 @@
+// creates or uses the database my_db
+mongo --quiet --eval "db = db.getSiblingDB('my_db')"
