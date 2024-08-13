@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
-from pymongo.collection import Collection
-from typing import Any
+""" Module for using PyMongo """
 
 
-def insert_school(mongo_collection: Collection, **kwargs: Any) -> str:
-    """
-    Inserts a new document into a MongoDB collection with the given keyword argumen
-    """
-    result = mongo_collection.insert_one(kwargs)
-    return str(result.inserted_id)
+def insert_school(mongo_collection, **kwargs):
+    """ Inserts new document in collection based on kwargs """
+    id_obj = mongo_collection.insert_one(kwargs)
+
+    return id_obj.inserted_id

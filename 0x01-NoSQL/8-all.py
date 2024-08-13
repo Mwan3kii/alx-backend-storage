@@ -1,15 +1,10 @@
 #!/usr/bin/env python3
-from typing import List, Dict
-from pymongo.collection import Collection
+""" Lists all documents in a collection """
 
-def list_all(mongo_collection: Collection) -> List[Dict]:
+
+def list_all(mongo_collection):
+    """list of all documents in collection or an empty list
     """
-    List all documents in a MongoDB collection.
+    cursor = mongo_collection.find()
 
-    Parameters:
-    mongo_collection (Collection): The pymongo collection object.
-
-    Returns:
-    List[Dict]: A list of documents, or an empty list if no documents are found.
-    """
-    return list(mongo_collection.find())
+    return [doc for doc in cursor]
