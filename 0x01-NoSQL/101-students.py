@@ -1,23 +1,18 @@
+#!/usr/bin/env python3
+
+""" Module for using PyMongo """
+
+
 def top_students(mongo_collection):
-    # Aggregate pipeline to calculate the average score for each student
-    pipeline = [
+    """ Returns all students sorted by average score"""
+    top_student = mongo_collection.aggregate([
         {
-            '$project': {
-                'name': 1,
-                'averageScore': {
-                    '$avg': '$topics.score'
-                }
+            "$project": {
+                "name": "$name",
+                "averageScore": {"$avg": "$topics.score"}
             }
         },
-        {
-            '$sort': {
-                'averageScore': -1
-            }
-        }
-    ]
+        {"$sort": {"averageScore": -1}}
+    ])
 
-    # Perform the aggregation
-    results = mongo_collection.aggregate(pipeline)
-    
-    # Convert the results to a list and return
-    return list(results)
+    return top_student
