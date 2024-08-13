@@ -1,3 +1,2 @@
 //  lists all documents in the collection school
-DB_NAME="$1"
-mongo "$DB_NAME" --quiet --eval 'db.school.find().forEach(printjson)'
+db.school.find()
