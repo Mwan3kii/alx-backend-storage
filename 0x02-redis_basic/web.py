@@ -15,10 +15,10 @@ def cache_with_expiration(method: Callable) -> Callable:
     def wrapper(url: str) -> str:
         """Generate the cache key for the URL"""
         cache_key = f"cached:{url}"
-        cached_result = redis_client.get(cache_key)
+        cached = redis_client.get(cache_key)
 
-        if cached_result:
-            return cached_result.decode('utf-8')
+        if cached:
+            return cached.decode('utf-8')
         result = method(url)
         redis_client.setex(cache_key, 10, result)
 
